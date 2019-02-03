@@ -1,3 +1,6 @@
-<h1> One of my STEM related Blog Posts </h1>
+<h1> Add your STEM Article </h1>
 
+<% if @article.errors.any? %>
+<h2>The following prevented your article from being created </h2>
+<%end%>
 <%= render 'form' %>

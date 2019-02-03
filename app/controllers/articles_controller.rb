@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
      def show
 
             @article = Article.find(params[:id])
-            redirect_to article_path
+           # redirect_to article_path
      end 
      
      def destroy
@@ -50,7 +50,7 @@ class ArticlesController < ApplicationController
 
     if @article.save
 
-        flash[:notice] = "Article was successfully created"
+        flash[:notice] = "Article successfully created"
 
         redirect_to article_path(@article)
 

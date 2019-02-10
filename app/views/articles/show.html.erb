@@ -7,7 +7,7 @@
 
 
 
-<div class="article-actions">
+    <div class="article-actions">
     
         <%=link_to "Edit this artice", 
             edit_article_path(@article), 
@@ -19,6 +19,5 @@
         <%=link_to "Delete this article", articles_path(@article), method: :delete,
                     data:{confirm: "Are you sure you want to delete the article ?"},
                     class: "btn btn-xs btn-danger"%>
-</div>
 
 </div>

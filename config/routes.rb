@@ -14,22 +14,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
-  
-  # resources :articles, only: [] do
-  # collection do 
-  #   get :list
-  #   get :trendlist
-  #   get :trending
-  #   get :deleted
-  # end
-  
-  #get 'signup', to: 'users#new'
-  #resources :users, except: [:new]
-  
-  #get 'login', to: 'sessions#new'
-  #post 'login', to: 'sessions#create'
-  #delete 'logout', to: 'sessions#destroy'
-  
+
   resources :categories, except: [:destroy]
 
   # You can have the root of your site routed with "root"

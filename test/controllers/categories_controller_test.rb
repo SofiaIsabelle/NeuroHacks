@@ -1,27 +1,32 @@
 require 'test_helper'
 
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
-    
-    
-    def setup
-        @category = Category.create(name: "neuroscience")
+  
+  def setup
+    @category = Category.create(name: "Neuroscience")
+    @user = User.create(username: "Alpha Codeness", email: "alphacodeness@gmail.com", password: "password", admin: true)
+  end
+  
+  test "should get categories index" do
+    get categories_path
+    assert_response :success
+  end
+  
+  test "should get new" do
+    sign_in_as(@user, "password")
+    get new_category_path
+    assert_response :success
+  end
+  
+  test "should get show" do
+    get category_path(@category)
+    assert_response :success
+  end
+  
+  test "should redirect create when admin not logged in" do
+    assert_no_difference 'Category.count' do
+      post categories_path, params: { category: { name: "sports" } }
     end
-    
-    test "should get categories index" do
-        get :index
-        assert_response :success
-    end
-    
-    test "should get new" do
-        get :new
-        assert_response :success
-    end
-    
-    test "should get show" do
-        #get(:show, {'id'=> @category.id}) 
-        #assert_response :success
-       get category_path(@category)
-       assert_response :success
-    end
-    
+    assert_redirected_to categories_path
+  end
 end
